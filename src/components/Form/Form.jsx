@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react'; 
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Form.module.css';
 
@@ -8,7 +8,7 @@ const Form = ({ submitSearch }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if (location || location === '') return;
+        if (!location  || location === '') return;
         submitSearch(location);
         console.log({location}); 
     };
@@ -30,6 +30,10 @@ const Form = ({ submitSearch }) => {
             </button>
         </form>
     );
+};
+
+Form.propTypes = {
+    submitSearch: PropTypes.func.isRequired,
 };
 
 export default Form;
